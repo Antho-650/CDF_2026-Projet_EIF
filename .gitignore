@@ -1,0 +1,55 @@
+# KiCad
+*.kicad_prl
+fp-info-cache
+*-backups/
+*-bak
+*.bak
+*.bck
+*-save.pro
+*-save.kicad_pcb
+*.kicad_pcb-bak
+*.sch-bak
+~*.kicad_*
+
+# STM32CubeIDE / C / C++
+Debug/
+Release/
+*.o
+*.elf
+*.bin
+*.map
+*.list
+*.hex
+*.d
+*.su
+*.axf
+*.launch
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# OS / General
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
