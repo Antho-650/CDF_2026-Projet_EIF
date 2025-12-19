@@ -1,0 +1,13 @@
+mdp : 1937
+
+#connexion ssh entre le PC et la raspberyy du turtlebot3
+
+1) ifconfig sur la raspberry pour voir l'adresse IP sur wlan0
+2) pour se connecter à la raspberry, du PC faire ssh nom_session@adresse_IP  (nom : antho)
+
+
+
+
+#éteindre la raspberry du turtlebot3, ne pas éteindre l'alimentation directement !!!!!!!!
+1) Pour éteindre la raspberry proprement:  sudo shutdown now
+2) enlever l'alim

@@ -4,7 +4,7 @@ Dépôt officiel pour la participation à la Coupe de France de Robotique 2026.
 
 ## Documents et Suivi
 
-Le suivi des achats (Excel/Google Sheets) et les documents administratifs sont sur le Google Drive du projet : [Insérer le lien ici]
+Le suivi des achats (Excel/Google Sheets) et les documents administratifs sont sur le Google Drive du projet : https://drive.google.com/drive/u/1/folders/1xHnVBchuZF8TSyvHd5yfe0Ny8L7n_gqj
 
 ## Structure du dépôt
 
