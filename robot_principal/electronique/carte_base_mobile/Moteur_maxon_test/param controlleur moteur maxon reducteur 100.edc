@@ -8,7 +8,7 @@
 			<ProfileSource>maxon motor ag</ProfileSource>
 			<ProfileClassID>Device</ProfileClassID>
 		</ProfileHeader>
-		<ProfileBody type="ProfileBody_Device_Escon" formatName="ESCON" formatVersion="1.0" supportedLanguages="en" fileVersion="1.0" fileCreator="antho" fileName="param controlleur moteur maxon reducteur 100.edc" fileCreationDate="30.12.2025">
+		<ProfileBody type="ProfileBody_Device_Escon" formatName="ESCON" formatVersion="1.0" supportedLanguages="en" fileVersion="1.0" fileCreator="antho" fileName="param controlleur moteur maxon reducteur 100.edc" fileCreationDate="01.01.2026">
 			<DeviceIdentity>
 				<vendorName readOnly="true">maxon motor ag</vendorName>
 				<deviceFamily readOnly="true">
@@ -5880,7 +5880,7 @@
 							<label lang="ja">min-1/%</label>
 							<label lang="zh-CN">rpm/%</label>
 						</unit>
-						<actualValue>200000</actualValue>
+						<actualValue>363636</actualValue>
 					</parameter>
 					<parameter uniqueID="PARAM_SetValueSpeedOffset" persistent="true" variableName="REG_lSetValueSpeedOffset" callbackName="DEV_CheckDisabled">
 						<index>0x4141</index>
