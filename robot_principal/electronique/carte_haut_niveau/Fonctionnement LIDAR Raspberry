@@ -1,0 +1,3 @@
+/*    fonctionnement LIDAR avec la raspberry       */
+
+- ssh CDF@robot-pi.local    // CDF : nom de l'utilisateur
