@@ -1,3 +1,49 @@
-/*    fonctionnement LIDAR avec la raspberry       */
+===========================================================
+    PROCÉDURE RPLIDAR A1 - RASPBERRY PI 4 (ROS2 JAZZY)
+===========================================================
 
-- ssh CDF@robot-pi.local    // CDF : nom de l'utilisateur
+1. CONNEXION ET LANCEMENT (Sur la Raspberry Pi)
+-----------------------------------------------------------
+# Ouvrir un terminal sur le PC et se connecter
+ssh CDF@robot-pi.local
+
+# Une fois connecté, donner les droits au port USB (à faire à chaque reboot)
+sudo chmod 666 /dev/ttyUSB0
+
+# Charger l'environnement et lancer le LIDAR
+source ~/ros2_ws/install/setup.bash
+ros2 launch sllidar_ros2 sllidar_a1_launch.py
+
+
+2. VISUALISATION (Sur ton PC KDE - Terminal Local)
+-----------------------------------------------------------
+# Charger ROS2 et s'assurer d'être sur le bon domaine
+source /opt/ros/jazzy/setup.bash
+export ROS_DOMAIN_ID=0
+
+# Optionnel : Désactiver le pare-feu si rien ne s'affiche
+sudo ufw disable
+
+# Lancer RViz2 normalement :
+rviz2
+
+# OU lancer avec ta configuration sauvegardée (si créée) :
+# rviz2 -d ~/lidar_view.rviz
+
+
+3. ARRÊT PROPRE (Indispensable pour la carte SD)
+-----------------------------------------------------------
+# Dans le terminal du LIDAR :
+Faire "Ctrl + C" pour arrêter le programme.
+
+# Pour éteindre la Raspberry Pi :
+sudo shutdown now
+
+# Attendre que la LED verte de la Pi s'éteigne avant de débrancher.
+
+
+4. RAPPEL CONFIG RVIZ (Si config manuelle)
+-----------------------------------------------------------
+- Fixed Frame : laser
+- Add -> By Topic -> /scan (LaserScan)
+===========================================================
