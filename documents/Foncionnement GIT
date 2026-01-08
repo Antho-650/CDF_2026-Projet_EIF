@@ -1,0 +1,73 @@
+================================================================
+    GUIDE GIT & GITHUB - EQUIPE CDF 2026
+================================================================
+
+Ce guide permet de configurer Git pour travailler sur le robot
+sans avoir à taper de mot de passe à chaque opération.
+
+----------------------------------------------------------------
+1. INSTALLATION DES OUTILS
+----------------------------------------------------------------
+
+### SUR WINDOWS :
+1. Télécharger et installer Git : https://git-scm.com/download/win
+2. Télécharger et installer GitHub CLI (gh) : https://cli.github.com/
+   (Prendre le fichier .msi)
+
+### SUR LINUX (Ubuntu / Debian / Raspberry Pi OS) :
+Ouvre un terminal et tape ces commandes :
+1. Installer Git :
+   > sudo apt update && sudo apt install git -y
+2. Installer GitHub CLI (gh) :
+   > sudo mkdir -p -m 755 /etc/apt/keyrings
+   > curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/etc/apt/keyrings/githubcli-archive-keyring.gpg
+   > echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+   > sudo apt update && sudo apt install gh -y
+
+----------------------------------------------------------------
+2. CONNEXION INITIALE (A FAIRE UNE SEULE FOIS)
+----------------------------------------------------------------
+
+Dans ton terminal (PowerShell sur Windows ou Terminal sur Linux) :
+
+1. Configurer ton identité :
+   > git config --global user.name "Ton Prénom"
+   > git config --global user.email "ton-email@exemple.com"
+
+2. Se connecter à GitHub sans mot de passe :
+   > gh auth login
+   - Choisir : GitHub.com
+   - Choisir : HTTPS
+   - Authenticate Git with your GitHub credentials? --> Taper 'Y' (OUI)
+   - Choisir : Login with a web browser
+   - Copier le code, appuyer sur Entrée, et le coller dans la page web.
+
+----------------------------------------------------------------
+3. RECUPERER LE PROJET
+----------------------------------------------------------------
+
+Place-toi dans le dossier de ton choix (ex: Documents) et tape :
+> git clone https://github.com/[TON_NOM_UTILISATEUR]/CDF_2026.git
+
+----------------------------------------------------------------
+4. UTILISATION QUOTIDIENNE (L'ORDRE EST IMPORTANT)
+----------------------------------------------------------------
+
+### A. AVANT de commencer à coder (TRÈS IMPORTANT) :
+Toujours récupérer le travail des autres pour éviter les bugs :
+> git pull
+
+### B. UNE FOIS ton travail terminé :
+1. Ajouter les changements :
+   > git add .
+2. Créer le paquet avec un message clair :
+   > git commit -m "Ajout de la gestion des moteurs Maxon"
+3. Envoyer sur GitHub :
+   > git push
+
+----------------------------------------------------------------
+RÈGLES DE SURVIE :
+1. NE JAMAIS coder sans avoir fait un 'git pull' au début.
+2. Si Git affiche un message de "CONFLIT", ne panique pas, appelle le responsable info.
+3. Fais des commits souvent, même pour des petits changements.
+================================================================
