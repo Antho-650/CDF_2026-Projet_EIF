@@ -1,0 +1,67 @@
+===================================================================
+GUIDE DE DÉMARRAGE RAPIDE : ROS 2 SLAM (RASPBERRY PI + LIDAR A1)
+===================================================================
+
+PRÉ-REQUIS OBLIGATOIRES :
+1. Réseau : Le PC et la Pi doivent être sur le MÊME réseau (Hotspot téléphone ou Câble Ethernet).
+   -> PAS de Wi-Fi "Eduroam" ou public.
+2. Synchronisation : Vérifier l'heure sur la Pi avec la commande `date`.
+   -> Si incorrecte : sudo date -s "AAAA-MM-JJ HH:MM:SS"
+
+-------------------------------------------------------------------
+PARTIE A : SUR LA RASPBERRY PI (En SSH)
+Ouvrir 4 terminaux différents via SSH (ssh user@ip_pi)
+-------------------------------------------------------------------
+
+TERMINAL 1 : Le LIDAR
+(Donne les permissions USB et lance le moteur)
+$ sudo chmod 666 /dev/ttyUSB0
+$ source /opt/ros/jazzy/setup.bash
+$ source ~/ros2_ws/install/setup.bash
+$ ros2 launch sllidar_ros2 sllidar_a1_launch.py
+
+TERMINAL 2 : La "Colle" Robot -> Laser
+(Indique où est le laser sur le robot)
+$ source /opt/ros/jazzy/setup.bash
+$ ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 base_footprint laser
+
+TERMINAL 3 : La "Colle" Monde -> Robot (Odométrie Fake)
+(Indique que le robot est supposé être à l'origine, car pas de roues codeuses)
+$ source /opt/ros/jazzy/setup.bash
+$ ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 odom base_footprint
+
+TERMINAL 4 : Le Cerveau (SLAM Toolbox)
+(Lance l'algorithme de cartographie)
+$ source /opt/ros/jazzy/setup.bash
+$ ros2 launch slam_toolbox online_async_launch.py
+
+-------------------------------------------------------------------
+PARTIE B : SUR LE PC (Visualisation)
+-------------------------------------------------------------------
+
+TERMINAL PC : Lancement de RViz
+(Attention : Toujours configurer le DOMAIN_ID avant)
+$ source /opt/ros/jazzy/setup.bash
+$ export ROS_DOMAIN_ID=0
+$ rviz2
+
+CONFIGURATION RVIZ (À faire une fois ouvert) :
+1. Global Options (Haut Gauche) -> Fixed Frame : écrire "map"
+2. Bouton "Add" (Bas Gauche) -> Ajouter "TF" (Pour voir les repères)
+3. Bouton "Add" -> Ajouter "Map" (Topic: /map)
+   -> Astuce : Dans "QoS" de la Map, mettre Durability sur "Transient Local"
+4. Bouton "Add" -> Ajouter "LaserScan" (Topic: /scan)
+   -> Astuce : Dans "QoS" du Scan, mettre Reliability sur "Best Effort"
+   -> Astuce : Mettre "Size" à 0.05 pour mieux voir les points
+
+-------------------------------------------------------------------
+PARTIE C : ENREGISTREMENT DE DONNÉES (Pour projet IA/Offline)
+-------------------------------------------------------------------
+
+Dans un nouveau terminal sur le PC :
+$ source /opt/ros/jazzy/setup.bash
+$ export ROS_DOMAIN_ID=0
+$ cd ~/Documents
+$ ros2 bag record -o nom_du_fichier /scan /tf /tf_static /map
+
+(Faire CTRL+C pour arrêter l'enregistrement)

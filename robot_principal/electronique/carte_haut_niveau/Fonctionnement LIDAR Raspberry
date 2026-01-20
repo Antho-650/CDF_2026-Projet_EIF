@@ -5,7 +5,7 @@
 1. CONNEXION ET LANCEMENT (Sur la Raspberry Pi)
 -----------------------------------------------------------
 # Ouvrir un terminal sur le PC et se connecter
-ssh CDF@robot-pi.local
+ssh CDF@robot-pi.local  #mdp : CDF
 
 # Une fois connecté, donner les droits au port USB (à faire à chaque reboot)
 sudo chmod 666 /dev/ttyUSB0

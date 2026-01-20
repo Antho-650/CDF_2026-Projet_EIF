@@ -58,6 +58,8 @@ Toujours récupérer le travail des autres pour éviter les bugs :
 > git pull
 
 ### B. UNE FOIS ton travail terminé :
+(optionnel) git status : pour voir les fichiers sur ton pc mais pas le git
+
 1. Ajouter les changements :
    > git add .
 2. Créer le paquet avec un message clair :
