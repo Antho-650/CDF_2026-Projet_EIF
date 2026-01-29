@@ -53,3 +53,9 @@ Thumbs.db
 *~
 .idea/
 .vscode/
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+.clangd/
