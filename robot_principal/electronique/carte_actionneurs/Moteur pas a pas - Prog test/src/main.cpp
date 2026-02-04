@@ -37,11 +37,11 @@ const int PIN_MS3 = 25;
 
 #if MOTOR_CHOICE == 1
   // --- Moteur 1 (1/16) ---
-  const int MICROSTEPS = 16;
+  const int MICROSTEPS = 2;
   // Configuration LV8729 pour 1/16 : L, L, H
-  const int MS1_STATE = LOW;
+  const int MS1_STATE = HIGH;
   const int MS2_STATE = LOW;
-  const int MS3_STATE = HIGH;
+  const int MS3_STATE = LOW;
   
 #elif MOTOR_CHOICE == 2
   // --- Moteur 2 (1/8) ---
@@ -56,12 +56,12 @@ const int PIN_MS3 = 25;
 #endif
 
 const int STEPS_PER_REV_BASE = 200; // Moteur 1.8 deg
-const int STEPS_TARGET = STEPS_PER_REV_BASE * MICROSTEPS; // Nombre de pas pour un tour complet
+const int STEPS_TARGET = STEPS_PER_REV_BASE * MICROSTEPS * 5; // Nombre de pas pour 5 tours
 
 // Vitesse : Délai entre les pas
 // Avec des microsteps élevés (1/16), il faut réduire ce délai pour garder une vitesse raisonnable.
-// 200 us donne une bonne vitesse pour 1/16.
-const int SPEED_DELAY_US = 200; 
+// 100 us est plus rapide que 200us.
+const int SPEED_DELAY_US = 250; 
 
 void setup() {
   Serial.begin(115200);
