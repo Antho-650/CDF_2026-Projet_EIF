@@ -56,7 +56,7 @@ const int PIN_MS3 = 25;
 #endif
 
 const int STEPS_PER_REV_BASE = 200; // Moteur 1.8 deg
-const int STEPS_TARGET = STEPS_PER_REV_BASE * MICROSTEPS * 5; // Nombre de pas pour 5 tours
+const int STEPS_TARGET = 1700; // Nombre de pas pour 5 tours
 
 // Vitesse : Délai entre les pas
 // Avec des microsteps élevés (1/16), il faut réduire ce délai pour garder une vitesse raisonnable.
@@ -103,7 +103,9 @@ void loop() {
   }
 
   delay(1000); // 1 seconde de pause
+  while(1); // Boucle infinie pour arrêter le programme après un tour
 
+  /*
   // --- Sens 2 ---
   Serial.println("Rotation Sens 2 (1 tour)");
   digitalWrite(PIN_DIR, LOW); 
@@ -116,4 +118,5 @@ void loop() {
   }
 
   delay(1000); // 1 seconde de pause
+  */
 }
