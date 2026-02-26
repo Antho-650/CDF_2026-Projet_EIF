@@ -1,0 +1,11 @@
+moteur noir :
+
+const int STEPS_PER_REV_BASE = 200; // Moteur 1.8 deg
+const int STEPS_TARGET = 1700; // Nombre de pas pour 5 tours
+
+// Vitesse : Délai entre les pas
+// Avec des microsteps élevés (1/16), il faut réduire ce délai pour garder une vitesse raisonnable.
+// 100 us est plus rapide que 200us.
+const int SPEED_DELAY_US = 250;
+
+fermeture pince, avec ces params il faut faire ~1700 pas

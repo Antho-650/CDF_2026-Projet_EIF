@@ -1,0 +1,49 @@
+
+
+1. CONNEXION ET LANCEMENT (Sur la Raspberry Pi)
+-----------------------------------------------------------
+
+modifier wifi si pas le meme wifi pour utiliser le ssh avec le pc
+
+ls /etc/netplan/  =>  50-cloud-init.yaml ou 00-installer-config.yaml.
+
+sudo nano /etc/netplan/50-cloud-init.yaml  si premier
+
+modifier mdp et nom wifi
+
+crtl o + entre
+crtl x
+
+sudo netplan try
+
+
+
+# Ouvrir un terminal sur le PC et se connecter
+ssh CDF@robot-pi.local  #mdp : CDF
+
+# Une fois connecté, donner les droits au port USB (à faire à chaque reboot)
+sudo chmod 666 /dev/ttyUSB0
+
+
+
+- sudo shutdown now    //pour éteindre la raspberry proprement avant de débranché
+
+
+
+
+//  *******   rasberry can    ******///
+
+sudo nano /boot/firmware/config.txt   //fichier configuration
+
+
+ecrire la suite à la fin du fichier : (en dessous du all)
+# Activation CAN HAT Waveshare
+dtparam=spi=on
+dtoverlay=mcp2515-can0,oscillator=12000000,interrupt=25   //oscillator depend du quartz sur le module
+dtoverlay=spi-bcm2835
+
+- sudo reboot
+
+- sudo ip link set can0 up type can bitrate 500000
+
+
